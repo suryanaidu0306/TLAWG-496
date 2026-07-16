@@ -1,0 +1,21 @@
+clc;
+clear;
+close;
+
+// Given values
+ZR = 100;          // Load impedance (Ohms)
+Zo = 600;          // Characteristic impedance (Ohms)
+f = 100*(10^6);    // Frequency = 100 MHz
+
+// Wavelength (m)
+lo = 300/(f*(10^-6));
+
+// Point of attachment (Location of stub)
+Ls = (lo/(2*%pi)) * atan(sqrt(ZR/Zo));
+
+// Length of short-circuited stub
+Lt = (lo/(2*%pi)) * (%pi + atan((sqrt(ZR*Zo))/(ZR-Zo)));
+
+// Display results
+printf("Point of attachment = %.2f cm\n", Ls*100);
+printf("Length of the short-circuited stub = %.2f cm\n", Lt*100);
